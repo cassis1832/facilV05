@@ -1,0 +1,36 @@
+<h5>Cliente</h5>
+
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="nome">Nome</label>
+    <input class="form-control validate" [(ngModel)]="cliente.nome" id="nome" type="text" placeholder="Nome do Cliente">
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="endereco">Endereço</label>
+    <input class="form-control validate" [(ngModel)]="cliente.endereco" id="endereco" type="text"
+      placeholder="Endereço">
+  </div>
+  <div class="form-group col-md-1">
+    <label for="nome">Número</label>
+    <input class="form-control validate" [(ngModel)]="cliente.numero" id="numero" type="text" placeholder="Número">
+  </div>
+  <div class="form-group col-md-5">
+    <label for="complemento">Complemento</label>
+    <input class="form-control validate" [(ngModel)]="cliente.complemento" id="complemento" type="text"
+      placeholder="Complemento">
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="telefone">Telefone</label>
+    <input class="form-control validate" [(ngModel)]="cliente.telefone" id="telefone" type="text"
+      placeholder="Telefone">
+  </div>
+  <button type="button" class="btn btn-info btn-sm col-md-1" (click)="openZoom()">Zoom</button>
+</div>
+
+<button type="button" class="btn btn-info btn-sm float-right col-md-1" (click)="onBotaoCancela()">Cancela</button>
+<button type="button" class="btn btn-success btn-sm float-right col-md-1"
+  (click)="onBotaoOk(cliente.clienteId)">Ok</button>

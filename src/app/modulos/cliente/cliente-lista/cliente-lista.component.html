@@ -1,0 +1,60 @@
+<div class="form-row">
+    <div class="form-group col-md-8">
+        <h5>Clientes</h5>
+    </div>
+    <div class="form-group col-md-4">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                [ngModel]="argumento" name="argumento">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="pesquisa()">Search</button>
+        </form>
+    </div>
+</div>
+
+
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th style="width: 1%">Núm.</th>
+            <th style="width: 1%">Complem.</th>
+            <th style="width: 13%">Telefone</th>
+            <th style="width: 1%"></th>
+            <th style="width: 1%"></th>
+            <th style="width: 1%"><button class="btn btn-primary btn-sm float-right"
+                    [routerLink]="['/cliente/editar', 0]">Novo</button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of clientes | slice: (page-1) * pageSize : page * pageSize">
+            <td> {{ cliente.nome }} </td>
+            <td> {{ cliente.endereco }} </td>
+            <td> {{ cliente.numero }} </td>
+            <td> {{ cliente.complemento }} </td>
+            <td> {{ cliente.telefone }} </td>
+            <td>
+                <button type="button" class="btn btn-info btn-sm float-right"
+                    [routerLink]="['/cliente', cliente.clienteId]">Detalhes</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-success btn-sm float-right"
+                    [routerLink]="['/cliente/editar', cliente.clienteId]">Alterar</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm float-right"
+                    (click)="openConfirmacao(cliente)">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="cd-flex justify-content-center">
+    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="collectionSize"></ngb-pagination>
+</div>
+
+<div class="col s6">
+    <router-outlet></router-outlet>
+</div>
